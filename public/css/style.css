@@ -1,0 +1,301 @@
+:root {
+    /* Paleta de colores */
+    --amarillo: #EAC926;
+    --azul: #03264C;
+    --celeste: #1259c3;
+    --gris-oscuro: #666;
+    --gris-claro: #ebebeb;
+    --verde: #39b54a;
+  
+    /* Tipografía */
+    --font-familia: 'Roboto', sans-serif;
+  }
+
+
+  /* Reset de estilos (opcional) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+.header{
+    background-color: var(--amarillo);
+    padding: 20px;
+}
+
+
+.logo {
+    width: 200px;
+    max-width: 100%;
+}
+
+.input-container {
+    width: 100%
+}
+
+
+.img-banner{
+    width: 100%;
+} 
+
+.header-texto{
+    text-align: center;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px; /* Tamaño base del cuerpo de texto */
+}
+
+h2 {
+    font-size: 24px; /* Tamaño para titulares */
+}
+
+.product p {
+    font-size: 18px; /* Tamaño para precios */
+}
+
+.product p:nth-of-type(2) {
+    font-size: 16px; /* Tamaño para descuentos */
+}
+
+footer p {
+    font-size: 16px; /* Tamaño para descripciones en el footer */
+}
+
+/*color*/
+
+.verde{
+    color: var(--verde);
+}
+
+/*estilos para la hamburguesa*/
+
+.burger-menu-conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-menu {
+    background-color: var(--celeste); /* Fondo azul */
+    border-radius: 5px;
+    width: 40px; /* Ancho del div */
+    height: 40px; /* Alto del div */
+}
+
+.burger-menu i {
+    margin: 11px;
+    color: #fff; /* Ícono en color blanco */
+    font-size: 20px; /* Tamaño del ícono */
+}
+
+
+/*footer*/
+
+/* Estilos para el pie de página */
+
+.footer-section {
+    background-color: #f5f5f5; /* Color de fondo opcional */
+    padding: 20px;
+    text-align: center; /* Centrar el contenido */
+}
+
+/* Estilos para los íconos dentro del pie de página */
+.footer-section i {
+    font-size: 2em; /* Tamaño de los íconos */
+    margin-bottom: 10px; /* Margen inferior de 10 píxeles */
+    color: var(--celeste); 
+}
+
+
+/* Estilos para el contenido de los productos */
+main{
+    background-color: var(--gris-claro);
+}
+
+.product-main {
+    width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+    margin: 0 auto; /* Centra la sección main */
+}
+
+.product{
+    margin: 10px;
+}
+
+.img-product{
+    width: 100%;
+}
+
+.product-detail{
+    /* border-top: 1px solid #ebebeb; */
+    padding: 15px;
+    position: relative;
+    background-color: #fff;
+}
+
+.price-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.price {
+    flex: 30%; /* Precio ocupa el 30% */
+    margin: 0;
+}
+
+.discount {
+    flex: 70%; /* Descuento ocupa el 70% */
+    text-align: left; /* Alineación del descuento a la izquierda */
+    margin: 0;
+}
+
+.product-delivery-icon {
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #39b54a;
+    background-color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+}
+
+
+/*OCULTAR LA DESCRIPCION*/
+/* Estilos para dispositivos con ancho máximo de 360px (Mobile) */
+@media screen and (max-width: 360px) {
+    /* Oculta la descripción del artículo en dispositivos móviles */
+    .product p {
+        display: none;
+    }
+}
+
+/* Estilos para dispositivos con ancho mínimo de 361px (Tablets) */
+@media screen and (min-width: 361px) {
+    /* Agrega estilos específicos para tablets aquí */
+    .product {
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    }
+}
+
+/* Estilos para dispositivos con ancho mínimo de 769px (Desktop) */
+@media screen and (min-width: 769px) {
+    /* Agrega estilos específicos para desktop aquí */
+    .product {
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    }
+}
+/*OCULTAR LA DESCRIPCION*/
+
+
+/* header responsive */
+@media screen and (min-width: 769px) {
+    /* Mostrar la barra de navegación para tablet y desktop */
+    .header-1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    /*NAVEGACION*/
+    .navbar {
+        display: flex;
+        justify-content: space-around;
+        gap: 100px;
+    }
+    
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        padding: 0;
+        margin: 0;
+    }
+    .navbar ul li a {
+        text-decoration: none; /* Quitar subrayado de enlaces */
+        color: #000;
+    }
+}
+
+
+/* Estilos específicos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    /* Ocultar la barra de navegación y el menú hamburguesa */
+    .desktop-tablet {
+        display: none;
+    }
+    .burger-menu {
+        display: none;
+    }
+
+    /* Mostrar la barra de navegación y menú hamburguesa para móviles */
+    .mobile {
+        display: block;
+    }
+
+    /*acomodar barra de busqueda*/
+    .search-bar-section,
+    .search-bar-section2 {
+    display: inline-block; /* Para evitar que se extienda al 100% */
+}
+
+.search-bar-section2 {
+    margin-left: 10px; /* Espacio entre los dos elementos */
+}
+}
+
+/* Estilos específicos para dispositivos tablet y desktop */
+@media screen and (min-width: 769px) {
+    /* Ocultar la barra de navegación para móviles */
+    .mobile {
+        display: none;
+    }
+}
+
+
+
+/*POSICIONAMIENTO DE PRODUCTOS*/
+
+.product-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: 100%; /* Por defecto, en mobile, se mostrará un artículo en cada fila */
+    margin-bottom: 20px; /* Espacio entre los artículos */
+}
+
+.titulo {
+    color: var(--gris-oscuro);
+    margin-left: 8px;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .titulo {
+        width: 100%; /* Ocupa todo el ancho en tablet y desktop */
+    }
+
+    .product {
+        width: calc(50% - 20px); /* Dos artículos en tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+    .product {
+        width: calc(25% - 20px); /* Cuatro artículos en desktop */
+    }
+}
+
