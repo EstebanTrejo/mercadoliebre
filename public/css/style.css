@@ -212,12 +212,34 @@ main{
 /* header responsive */
 @media screen and (min-width: 769px) {
     /* Mostrar la barra de navegación para tablet y desktop */
-    .header-1 {
+    /* .header-1 {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
+        margin-bottom: 20px;
+        gap: 50px;
+    } */
+
+    .header-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
         margin-bottom: 20px;
     }
+    
+    .header-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .search-bar-section,
+    .search-bar-section2 {
+        margin: 0 10px; /* Añade un espacio entre los elementos si es necesario */
+    }
+    
 
     /*NAVEGACION*/
     .navbar {
@@ -256,14 +278,34 @@ main{
     }
 
     /*acomodar barra de busqueda*/
+    .header-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .header-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
     .search-bar-section,
     .search-bar-section2 {
-    display: inline-block; /* Para evitar que se extienda al 100% */
-}
-
-.search-bar-section2 {
-    margin-left: 10px; /* Espacio entre los dos elementos */
-}
+        display: inline-block;
+    }
+    
+    .buy-info-container {
+        display: flex;
+    }
+    .buy-info {
+        display: block;
+    }
+    
+    .btn-inline{
+        display: inline;
+    }
 }
 
 /* Estilos específicos para dispositivos tablet y desktop */
@@ -274,6 +316,16 @@ main{
     }
 }
 
+/*ARREGLO DE BARRA DE BUSQUEDA */
+
+form {
+    display: flex;
+}
+
+input[type="text"],
+button {
+    display: inline-block;
+}
 
 
 /*POSICIONAMIENTO DE PRODUCTOS*/
@@ -316,12 +368,15 @@ main{
 
 .product .description {
     opacity: 0; /* Inicialmente ocultar la descripción */
-    transition: opacity 0.5s; /* Añadir una transición */
+    transition: opacity 0.5s, transform 0.5s; /* Añadir transición para opacidad y transformación */
+    transform: translateY(-100%); /* Mover el texto hacia arriba */
 }
 
 .product:hover .description {
     opacity: 1; /* Mostrar la descripción al pasar el mouse */
+    transform: translateY(0); /* Restablecer la posición del texto */
 }
+
 
 
 /*box shadow hover*/
@@ -336,4 +391,21 @@ main{
 .product:hover {
     /* Cambiar la sombra al pasar el mouse sobre el producto */
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/*ANIMACION FOOTER*/
+
+/* Estilo base para los iconos */
+/* Estilo base para los iconos */
+.footer-section i {
+    color: var(--celeste); /* Color base de los iconos */
+    transition: color 0.3s, transform 0.3s; /* Transición suave para color y tamaño */
+}
+
+/* Cambio de color y tamaño al hacer hover */
+.footer-section i:hover {
+    color: var(--amarillo); /* Color al hacer hover */
+    transform: scale(1.2); /* Aumenta el tamaño al hacer hover */
+    cursor: pointer;
 }
