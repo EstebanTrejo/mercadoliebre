@@ -167,7 +167,19 @@ main{
     position: absolute;
     right: 20px;
     top: -15px;
+
+    
 }
+
+.product .product-delivery-icon {
+    /* Otros estilos existentes... */
+    transition: transform 0.7s;
+}
+
+.product:hover .product-delivery-icon {
+    transform: rotate(-90deg);
+}
+
 
 
 /*OCULTAR LA DESCRIPCION*/
@@ -299,3 +311,29 @@ main{
     }
 }
 
+
+/*clase 6 animaciones*/
+
+.product .description {
+    opacity: 0; /* Inicialmente ocultar la descripción */
+    transition: opacity 0.5s; /* Añadir una transición */
+}
+
+.product:hover .description {
+    opacity: 1; /* Mostrar la descripción al pasar el mouse */
+}
+
+
+/*box shadow hover*/
+
+.product {
+    transition: box-shadow 0.3s; /* Añadir una transición para suavizar el efecto */
+
+    /* Estilo de la sombra inicial */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0); 
+}
+
+.product:hover {
+    /* Cambiar la sombra al pasar el mouse sobre el producto */
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}

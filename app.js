@@ -10,6 +10,16 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'home.html'));
 });
 
+// Ruta para servir el archivo home.html desde la carpeta 'views'
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+// Ruta para servir el archivo home.html desde la carpeta 'views'
+app.get('/crearcuenta', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'crearcuenta.html'));
+});
+
 // Iniciar el servidor en el puerto 3000 (o el puerto que desees)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
