@@ -145,139 +145,158 @@
 </html>
 
 <script>
-    // Obtener los elementos del formulario
-const fullnameInput = document.getElementById('fullname');
-const fullnameError = document.getElementById('fullnameError');
-const usernameInput = document.getElementById('username');
-const usernameError = document.getElementById('usernameError');
-const emailInput = document.getElementById('email');
-const emailError = document.getElementById('emailError');
-const passwordInput = document.getElementById('password');
-const passwordError = document.getElementById('passwordError');
-const confirmPasswordInput = document.getElementById('confirmPassword');
-const confirmPasswordError = document.getElementById('confirmPasswordError');
-
-const addressInput = document.getElementById('address');
-
-
-
-// ... (las validaciones como se han mostrado anteriormente) 
-
-
-// Validar Nombre de usuario
-usernameInput.addEventListener('input', function() {
-    const username = this.value;
-    if (username.length < 3) {
-        usernameError.innerText = 'El nombre de usuario debe tener al menos 3 caracteres';
-        usernameError.classList.add('error-message');
-    } else {
-        usernameError.innerText = 'Nombre de usuario válido';
-        usernameError.classList.remove('error-message');
-        usernameError.classList.add('success-message');
-    }
-});
-
-// Validar la Fecha de nacimiento
-dateOfBirthInput.addEventListener('change', function() {
-    const currentDate = new Date();
-    const selectedDate = new Date(this.value);
-    if (selectedDate > currentDate) {
-        dateOfBirthError.innerText = 'La fecha de nacimiento no puede estar en el futuro';
-        dateOfBirthError.classList.add('error-message');
-    } else {
-        dateOfBirthError.innerText = 'Fecha de nacimiento válida';
-        dateOfBirthError.classList.remove('error-message');
-        dateOfBirthError.classList.add('success-message');
-    }
-});
-
-// Validar el Domicilio
-addressInput.addEventListener('input', function() {
-    const address = this.value;
-    if (address.length === 0) {
-        addressError.innerText = 'Por favor, ingrese su domicilio';
-        addressError.classList.add('error-message');
-    } else {
-        addressError.innerText = 'Domicilio ingresado';
-        addressError.classList.remove('error-message');
-        addressError.classList.add('success-message');
-    }
-});
-
-// Validar la selección de al menos un checkbox
-categoriesInputs.forEach(input => {
-    input.addEventListener('change', function() {
-        const checkedCategories = Array.from(categoriesInputs).filter(input => input.checked);
-        if (checkedCategories.length === 0) {
-            categoriesError.innerText = 'Seleccione al menos una categoría de interés';
-            categoriesError.classList.add('error-message');
-        } else {
-            categoriesError.innerText = 'Categorías seleccionadas';
-            categoriesError.classList.remove('error-message');
-            categoriesError.classList.add('success-message');
+    document.addEventListener('DOMContentLoaded', function() {
+        const fullnameInput = document.getElementById('fullname');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const addressInput = document.getElementById('address');
+        const dateOfBirthInput = document.getElementById('birthdate');
+        const categoriesInputs = document.querySelectorAll('input[name="interests[]"]');
+        
+        const fullnameError = document.getElementById('fullnameError');
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+        const addressError = document.getElementById('addressError');
+        const dateOfBirthError = document.getElementById('dateOfBirthError');
+        const categoriesError = document.getElementById('categoriesError');
+    
+        function validateName() {
+            const fullname = fullnameInput.value;
+            if (fullname.length < 5) {
+                fullnameError.innerText = 'Ingrese nombre y apellido válidos (mínimo 5 caracteres)';
+                fullnameError.classList.add('error-message');
+                fullnameError.classList.remove('success-message');
+                return false;
+            } else {
+                fullnameError.innerText = '';
+                fullnameError.classList.add('success-message');
+                fullnameError.classList.remove('error-message');
+                return true;
+            }
         }
+    
+        function validateUsername() {
+            const username = usernameInput.value;
+            if (username.length < 4) {
+                usernameError.innerText = 'El nombre de usuario debe tener al menos 4 caracteres';
+                usernameError.classList.add('error-message');
+                usernameError.classList.remove('success-message');
+                return false;
+            } else {
+                usernameError.innerText = '';
+                usernameError.classList.add('success');
+                usernameError.classList.remove('error');
+                return true;
+            }
+        }
+    
+        function validateEmail() {
+            const email = emailInput.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.innerText = 'Ingrese un correo electrónico válido';
+                emailError.classList.add('error-message');
+                emailError.classList.remove('success-message');
+                return false;
+            } else {
+                emailError.innerText = '';
+                emailError.classList.add('success-message');
+                emailError.classList.remove('error-message');
+                return true;
+            }
+        }
+
+
+        function validatePassword() {
+            const password = passwordInput.value;
+            if (password.length < 8) {
+                passwordError.innerText = 'La contraseña debe tener al menos 8 caracteres';
+                passwordError.classList.add('error');
+                passwordError.classList.remove('success');
+                return false;
+            } else {
+                passwordError.innerText = '';
+                passwordError.classList.add('success');
+                passwordError.classList.remove('error');
+                return true;
+            }
+        }
+    
+        function validateConfirmPassword() {
+            const confirmPassword = confirmPasswordInput.value;
+            const password = passwordInput.value;
+            if (confirmPassword !== password) {
+                confirmPasswordError.innerText = 'Las contraseñas no coinciden';
+                confirmPasswordError.classList.add('error');
+                confirmPasswordError.classList.remove('success');
+                return false;
+            } else {
+                confirmPasswordError.innerText = '';
+                confirmPasswordError.classList.add('success');
+                confirmPasswordError.classList.remove('error');
+                return true;
+            }
+        }
+    
+        function validateAddress() {
+            const address = addressInput.value;
+            if (address.length === 0) {
+                addressError.innerText = 'Por favor, ingrese su domicilio';
+                addressError.classList.add('error');
+                addressError.classList.remove('success');
+                return false;
+            } else {
+                addressError.innerText = '';
+                addressError.classList.add('success');
+                addressError.classList.remove('error');
+                return true;
+            }
+        }
+    
+        function validateDateOfBirth() {
+            const currentDate = new Date();
+            const selectedDate = new Date(dateOfBirthInput.value);
+            if (selectedDate > currentDate) {
+                dateOfBirthError.innerText = 'La fecha de nacimiento no puede estar en el futuro';
+                dateOfBirthError.classList.add('error');
+                dateOfBirthError.classList.remove('success');
+                return false;
+            } else {
+                dateOfBirthError.innerText = '';
+                dateOfBirthError.classList.add('success');
+                dateOfBirthError.classList.remove('error');
+                return true;
+            }
+        }
+    
+        function validateForm() {
+            const isNameValid = validateName();
+            const isUsernameValid = validateUsername();
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            const isConfirmPasswordValid = validateConfirmPassword();
+            const isAddressValid = validateAddress();
+            const isDateOfBirthValid = validateDateOfBirth();
+            // Call other validation functions and store their results
+            
+            if (isNameValid && isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isAddressValid && isDateOfBirthValid /* Add other validation checks here */) {
+                return true; // Form submission allowed
+            } else {
+                return false; // Prevent form submission
+            }
+        }
+    
+        fullnameInput.addEventListener('input', validateName);
+        usernameInput.addEventListener('input', validateUsername);
+        emailInput.addEventListener('input', validateEmail);
+        passwordInput.addEventListener('input', validatePassword);
+        confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+        addressInput.addEventListener('input', validateAddress);
+        dateOfBirthInput.addEventListener('change', validateDateOfBirth);
+
     });
-});
-
-// Event listeners para los cambios en los campos
-fullnameInput.addEventListener('input', function() {
-    // Validar el nombre y apellido
-    const fullname = this.value;
-    if (fullname.length < 5) {
-        fullnameError.innerText = 'Ingrese nombre y apellido válidos';
-        fullnameError.classList.add('error-message');
-    } else {
-        fullnameError.innerText = 'Nombre y apellido válidos';
-        fullnameError.classList.remove('error-message');
-        fullnameError.classList.add('success-message');
-    }
-});
-
-emailInput.addEventListener('input', function() {
-    // Validar el correo electrónico
-    const email = this.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        emailError.innerText = 'Ingrese un correo electrónico válido';
-        emailError.classList.add('error-message');
-    } else {
-        emailError.innerText = 'Correo electrónico válido';
-        emailError.classList.remove('error-message');
-        emailError.classList.add('success-message');
-    }
-});
-
-passwordInput.addEventListener('input', function() {
-    // Validar la contraseña
-    const password = this.value;
-    if (password.length < 8) {
-        passwordError.innerText = 'La contraseña debe tener al menos 8 caracteres';
-        passwordError.classList.add('error-message');
-    } else {
-        passwordError.innerText = 'Contraseña válida';
-        passwordError.classList.remove('error-message');
-        passwordError.classList.add('success-message');
-    }
-});
-
-confirmPasswordInput.addEventListener('input', function() {
-    // Validar la confirmación de contraseña
-    const confirmPassword = this.value;
-    const password = passwordInput.value;
-    if (confirmPassword !== password) {
-        confirmPasswordError.innerText = 'Las contraseñas no coinciden';
-        confirmPasswordError.classList.add('error-message');
-    } else {
-        confirmPasswordError.innerText = 'Contraseña confirmada';
-        confirmPasswordError.classList.remove('error-message');
-        confirmPasswordError.classList.add('success-message');
-    }
-});
-
-// Puedes implementar la validación para los demás campos de manera similar.
-
-// Función para validar el formulario antes de enviar
-function validateForm() {
-    // Lógica para validar el formulario antes de enviar.
-}
-</script>
+    </script>
