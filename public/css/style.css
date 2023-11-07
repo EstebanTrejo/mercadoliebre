@@ -127,12 +127,18 @@ main{
     margin: 10px;
 }
 
-.img-product{
-    width: 100%;
+.img-div {
+    flex: 0 0 auto; /* Establecer el tamaño de este contenedor para que no crezca */
+}
+
+.img-product {
+    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantener la proporción original de la imagen */
+    display: block; /* Asegurar que no haya espacios en blanco alrededor de la imagen */
 }
 
 .product-detail{
-    /* border-top: 1px solid #ebebeb; */
+    border-top: 1px solid var(--gris-claro);
     padding: 15px;
     position: relative;
     background-color: #fff;
@@ -146,13 +152,13 @@ main{
 
 .price {
     flex: 30%; /* Precio ocupa el 30% */
-    margin: 0;
+    margin: 5px;
 }
 
 .discount {
     flex: 70%; /* Descuento ocupa el 70% */
     text-align: left; /* Alineación del descuento a la izquierda */
-    margin: 0;
+    margin: 5px;
 }
 
 .product-delivery-icon {
